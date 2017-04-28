@@ -1,5 +1,6 @@
-(function() {
-    function config($stateProvider, $locationProvider) {
+var blocChat = angular.module('blocChat', ['ui.router', 'firebase']);
+    blocChat.config(function($stateProvider, $locationProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/');
         $locationProvider
             .html5Mode({
                 enabled: true,
@@ -7,14 +8,9 @@
             });
 
         $stateProvider
-            .state('index', {
-                url: '/',
-                controller: 'IndexCtrl as index',
-                templateUrl: '/index.html'
-            });
-    };
-
-angular
-    .module('chatApp', ['ui.router'])
-    .config(firebase);
-})();
+            .state('home',{
+              url: '/',
+              controller: 'HomeCtrl as home',
+              templateUrl: '/templates/home.html'
+        });
+    });
