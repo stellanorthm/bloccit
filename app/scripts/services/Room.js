@@ -3,19 +3,23 @@
     var ref = firebase.database().ref().child('rooms');
     var rooms = $firebaseArray(ref);
 
-this.addRoom = function() {
-    rooms.$add({
-      text: this.newRoomText
-    });
-  };
-
     /*rooms.$add({
       text: 'Hello'
     });*/
 
+    var addRoom = function (roomText) {
+      console.log(roomText);
+      rooms.$add({ roomText }).then(function(ref) {
+
+      var id = ref.key;
+      console.log(rooms.$indexFor(roomText));
+})};
+
     return {
-      all: rooms
+      all: rooms,
+      newRoom: addRoom
     };
+
   }
 
   angular
