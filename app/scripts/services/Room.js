@@ -3,17 +3,12 @@
     var ref = firebase.database().ref().child('rooms');
     var rooms = $firebaseArray(ref);
 
-    /*rooms.$add({
-      text: 'Hello'
-    });*/
-
     var addRoom = function (roomText) {
-      console.log(roomText);
-      rooms.$add({ roomText }).then(function(ref) {
-
-      var id = ref.key;
-      console.log(rooms.$indexFor(roomText));
-})};
+        rooms.$add({ book: roomText }).then(function(ref) {
+        var id = ref.key;
+        rooms.$indexFor(id); // returns location in the array
+    }
+)};
 
     return {
       all: rooms,
