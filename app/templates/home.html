@@ -1,8 +1,18 @@
-<div ng-controller="HomeCtrl">
+<div ng-controller="HomeCtrl" style="display: block;">
   <section class="homeSidebar">
 <h1>Bloc Chat  <button class="roomButton" ng-click="home.open()">New Room</button></h1>
   <ul class="roomsList">
-    <li ng-repeat="room in home.rooms">{{ room.book }}</li>
+    <li ng-repeat="room in home.rooms" ng-click="home.setClickedRoom(room); home.setRoomShow()">{{ room.book }}</li>
   </ul>
+</section>
+<section class="homeMessages">
+  <div class="messagesHeader" ng-show="home.roomShow" ><h2>{{ home.currentRoom.book }}</h2></div>
+  <div class="messagesContent">
+    <p class="chatMessagesGroup" ng-repeat="message in home.messages"><span class="underline">
+            <span class="message-username"><strong>{{ message.username }} </strong></span>
+            <span class="message-timestamp">{{ message.sentAt }}</span></br>
+            <span class="message-content">{{ message.content }} </span>
+            </span></p>
+  </div>
 </section>
 </div>
