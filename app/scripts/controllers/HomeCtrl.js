@@ -12,8 +12,7 @@
        this.modalInstance = $uibModal.open({
           animation: this.animationsEnabled,
           templateUrl: '/templates/modal.html',
-          controller: 'ModalInstanceCtrl',
-          controllerAs: '$ctrl',
+          controller: 'ModalInstanceCtrl $ctrl',
           size: size ? size : 'sm',
           resolve: {
             items: function () {
