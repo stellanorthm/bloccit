@@ -14,5 +14,9 @@
             <span class="message-content">{{ message.content }} </span>
             </span></p>
   </div>
+      <div class="messageWrite">
+        <textarea class="form-control send-form" placeholder="Write your message here..." ng-model="home.content"></textarea>
+        <button type="submit" class="btn btn-primary send-button" ng-click="home.sendMessage()">Send</button>
+      </div>
 </section>
 </div>

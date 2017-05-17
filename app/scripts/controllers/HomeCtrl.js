@@ -12,7 +12,7 @@
        this.modalInstance = $uibModal.open({
           animation: this.animationsEnabled,
           templateUrl: '/templates/modal.html',
-          controller: 'ModalInstanceCtrl $ctrl',
+          controller: 'ModalInstanceCtrl as $ctrl',
           size: size ? size : 'sm',
           resolve: {
             items: function () {
@@ -29,6 +29,13 @@
 
       this.setRoomShow = function() {
         this.roomShow = true;
+      }
+
+      this.sendMessage = function() {
+        if(this.content) {
+          Message.send(this.content, this.currentRoom.$id);
+          this.content = '';
+        }
       }
 
 
