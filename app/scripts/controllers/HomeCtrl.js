@@ -22,6 +22,20 @@
         });
       }
 
+      this.openUsers = function (size) {
+      this.modalInstance = $uibModal.open({
+         animation: this.animationsEnabled,
+         templateUrl: '/templates/userModal.html',
+         controller: 'ModalInstanceCtrl as $ctrl',
+         size: size ? size : 'sm',
+         resolve: {
+           items: function () {
+             return 'hello world';
+           }
+         }
+       });
+     }
+
       this.setClickedRoom = function(clickedRoom) {
         this.currentRoom = clickedRoom;
         this.messages = Message.getByRoomId(this.currentRoom.$id);

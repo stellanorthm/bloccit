@@ -1,0 +1,17 @@
+<div ng-controller="UsersCtrl">
+  <div class="modal-header">
+    <p ng-if="firebaseUser">Signed in user: <strong>{{ firebaseUser.uid }}</strong></p>
+    <p ng-if="error">Error: <strong>{{ error }}</strong></p>
+
+  </div>
+  <div class="modal-body" id="modal-body">
+      <p>Sign Up for An Account</p>
+        <p><input class="roomInput" type="text" name="input" ng-model="cookie.username" name="username" placeholder="Username"></p>
+        <p><input class="roomInput" type="text" name="input" ng-model="cookie.email" name="email" placeholder="Email"></p>
+        <p><input class="roomInput" type="text" name="input" ng-model="cookie.password" name="password" placeholder="Password"></p>
+
+        <button id="username-btn" class="usernameButton" type="button" ng-click="cookie.setUserName()" data-dismiss="alert">Set New User</button>
+  </div>
+  <div class="modal-footer">
+  </div>
+</div>

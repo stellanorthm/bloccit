@@ -10,10 +10,12 @@
     };
 
     Message.send = function(newMessage, roomId) {
+      var messageDateTime = new Date;
       messages.$add({
           username: $cookies.get('blocChatCurrentUser'),
           roomId: roomId,
-          content: newMessage
+          content: newMessage,
+          sentAt: messageDateTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
         });
     };
 
