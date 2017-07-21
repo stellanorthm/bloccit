@@ -59,11 +59,20 @@ require 'random_data'
    )
  end
 
- user = User.first
- user.update_attributes!(
-   email: 'diego.a.mazzero@gmail.com',
-   password: 'old-lef-0!B@'
- )
+ # Admin
+  admin = User.create!(
+    name:     'Admin User',
+    email:    'admin@example.com',
+    password: 'helloworld',
+    role:     'admin'
+  )
+
+  # Member
+  member = User.create!(
+    name:     'Member User',
+    email:    'member@example.com',
+    password: 'helloworld'
+  )
 
 puts "#{Post.count}"
 Post.find_or_create_by(title: "This title is unique", body: "This body is unique")
