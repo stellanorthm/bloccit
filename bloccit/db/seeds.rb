@@ -74,6 +74,14 @@ require 'random_data'
     password: 'helloworld'
   )
 
+  # Member
+  moderator = User.create!(
+    name:     'Moderator User',
+    email:    'moderator@example.com',
+    password: 'helloworld'
+    role:     'moderator'
+  )
+
 puts "#{Post.count}"
 Post.find_or_create_by(title: "This title is unique", body: "This body is unique")
 puts "#{Post.count}"
