@@ -45,6 +45,7 @@ require 'random_data'
  100.times do
    Comment.create!(
  # #4
+    user: users.sample,
      post: posts.sample,
      body: RandomData.random_paragraph
    )
@@ -79,7 +80,6 @@ require 'random_data'
     name:     'Moderator User',
     email:    'moderator@example.com',
     password: 'helloworld'
-    role:     'moderator'
   )
 
 puts "#{Post.count}"

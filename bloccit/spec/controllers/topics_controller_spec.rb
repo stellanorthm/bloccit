@@ -111,11 +111,11 @@ RSpec.describe TopicsController, type: :controller do
       end
 
       describe "GET new" do
-        it "returns http redirect" do
-          get :new
-          expect(response).to redirect_to(topics_path)
-        end
+      it "returns http redirect" do
+        get :new
+        expect(response).to redirect_to(topics_path)
       end
+    end
 
       describe "POST create" do
         it "returns http redirect" do
@@ -311,9 +311,19 @@ RSpec.describe TopicsController, type: :controller do
       end
 
       describe "GET new" do
-        it "returns http redirect" do
-          delete :new, {id: my_topic.id}
-          expect(response).to redirect_to(new_session_path)
+        it "returns http success" do
+          get :new
+          expect(response).to have_http_status(:success)
+        end
+
+        it "renders the #new view" do
+          get :new
+          expect(response).to render_template :new
+        end
+
+        it "initializes @topic" do
+          get :new
+          expect(assigns(:topic)).not_to be_nil
         end
       end
 
@@ -361,12 +371,15 @@ RSpec.describe TopicsController, type: :controller do
       end
 
       describe "DELETE destroy" do
-        it "returns http redirect" do
+        it "deletes the topic" do
           delete :destroy, {id: my_topic.id}
-          expect(response).to redirect_to(new_session_path)
+          count = Post.where({id: my_topic.id}).size
+          expect(count).to eq 0
+        end
+        it "redirects to topics index" do
+          delete :destroy, {id: my_topic.id}
+          expect(response).to redirect_to topics_path
         end
       end
-
-    end
-
   end
+end
