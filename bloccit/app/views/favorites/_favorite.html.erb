@@ -1,4 +1,6 @@
 <% if favorite = current_user.favorite_for(post) %>
+<div class="col-md-4">
+<div class="row">
    <%= link_to [post, favorite], class: 'btn btn-danger', method: :delete do %>
      <i class="glyphicon glyphicon-star-empty"> </i>&nbsp; Unfavorite
    <% end %>
@@ -6,4 +8,24 @@
    <%= link_to [post, Favorite.new], class: 'btn btn-primary', method: :post do %>
      <i class="glyphicon glyphicon-star"> </i>&nbsp; Favorite
    <% end %>
+ </div>
+ <div class="col-md-4">
+   <div class="media">
+     <br />
+     <% avatar_url = @user.avatar_url(28) %>
+     <% if avatar_url %>
+       <div class="media-left">
+         <%= image_tag avatar_url, class: 'media-object' %>
+       </div>
+     <% end %>
+     <div class="media-body">
+       <h2 class="media-heading"><%= @user.name %></h2>
+       <small>
+         <%= pluralize(@user.votes.count, 'vote') %>,
+         <%= pluralize(@user.comments.count, 'comment') %>
+       </small>
+     </div>
+   </div>
+ </div>
+ </div>
  <% end %>

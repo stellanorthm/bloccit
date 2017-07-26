@@ -19,8 +19,14 @@
    </div>
  </div>
 
- // #14
+ <% if user_has_posts_comments %>
  <h2>Posts</h2>
  <%= render @user.posts %>
  <h2>Comments</h2>
  <%= render @user.comments %>
+ <h2>Favorites</h2>
+ <%= render @user.favorites %>
+ <% end %>
+ <% unless user_has_posts_comments %>
+  <%= @user.name %> has not submitted any posts yet!
+ <% end %>
